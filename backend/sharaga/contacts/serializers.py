@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from .models import Contacts, Hotline, Controls, Callback, Director
+from .models import *
 
 
 class ContactsSerializer(serializers.ModelSerializer):
@@ -33,3 +33,4 @@ class DirectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Director
         fields = ('id', 'theme', 'name', 'email', 'text')
+

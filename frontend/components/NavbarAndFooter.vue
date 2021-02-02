@@ -105,10 +105,10 @@
                   Преподавателям 
                 </a>
                 <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/teachers/background_information/">Справочная информация</a>
-                  <a class="dropdown-item" href="/teachers/educational_and_methodical_work/">Учебно-методическая работа</a>
-                  <a class="dropdown-item" href="/teachers/additional_education/">Дополнительное образование</a>
-                  <a class="dropdown-item" href="/teachers/seminars/">Республиканские семинары</a>
+                  <nuxt-link class="dropdown-item" to="/teachers/info">Справочная информация</nuxt-link>
+                  <nuxt-link class="dropdown-item" to="/teachers/educationalandmethodicalwork/">Учебно-методическая работа</nuxt-link>
+                  <nuxt-link class="dropdown-item" to="/teachers/additionaleducation/">Дополнительное образование</nuxt-link>
+                  <nuxt-link class="dropdown-item" to="/teachers/seminars/">Республиканские семинары</nuxt-link>
                 </div>
               </li>
                 <li class="nav-item dropdown">
@@ -342,5 +342,39 @@ export default {
     }
   .icon{
     margin-top: -6px !important;
+}
+ .container {
+     min-width: 320px;
+     max-width: 100%;
+     box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+table td, table th {
+    border: 1px solid #cbbdbd;
+}
+
+
+ @media (max-width: 720px) {
+     .container table thead {
+     display: none;
+}
+.container table tr {
+
+     display: block;
+
+}
+ .container table td {
+     display: flex;
+     justify-content: space-between;
+}
+ .container table td::before {
+     content: attr(data-label);
+     font-weight: bold;
+}
 }
 </style>

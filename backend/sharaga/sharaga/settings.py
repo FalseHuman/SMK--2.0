@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'contacts.apps.ContactsConfig',
+    'teachers.apps.TeachersConfig',
     'corsheaders',
 ]
 
@@ -108,13 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
 CKEDITOR_CONFIGS = {
 
     'default': {
-
-     'toolbar': 'None'
-
+        'toolbar': "none"
     },
 
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -134,6 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/media/' # add this
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # add this
 

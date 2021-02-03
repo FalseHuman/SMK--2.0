@@ -18,4 +18,10 @@ class SeminarsViewSet(viewsets.ModelViewSet):
     queryset = Seminars.objects.all().order_by('-data')
     serializer_class = SeminarsSerializer
 
+class CertificationViewSet(viewsets.ModelViewSet):
+    queryset = Certification.objects.all().order_by('-data')
+    serializer_class = CertificationSerializer
 
+class CallbackEducationViewSet(viewsets.ModelViewSet):
+    queryset = CallbackEducation.objects.all().order_by('name')
+    serializer_class = CallbackEducationSerializer

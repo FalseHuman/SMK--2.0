@@ -25,3 +25,15 @@ class SeminarsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seminars
         fields = ('id', 'title', 'text', 'data')
+
+class CertificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Certification
+        fields = ('id', 'title', 'text', 'data')
+
+class CallbackEducationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CallbackEducation
+        fields = ('id', 'name', 'email', 'file', 'text')

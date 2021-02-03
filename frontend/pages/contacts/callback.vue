@@ -15,7 +15,7 @@
         <div class="center"><strong>Форма отправки письма директору ГАПОУ РБ "Салаватский медицинский колледж"</strong></div>
           <form @submit.prevent="submitDirector">
           <input type="text" v-model="comm.theme" class="form-control" placeholder="Тема обращения" name ="name" required> <br>
-          <input type="text" v-model="comm.name" class="form-control" placeholder="Ваше имя" name ="name" required> <br>
+          <input type="text" v-model="comm.name" class="form-control" placeholder="ФИО" name ="name" required> <br>
           <input type="email" v-model="comm.email" class="form-control" placeholder="Адрес эл.почты" id="exampleInputEmail1" aria-describedby="emailHelp" required> <br>
           <textarea   v-model="comm.text" class="form-control"  name="text" cols="145"  required=""  placeholder="Текст обращения" rows="5" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea><br>
           <button  class="btn btn-outline-primary" type="submit">Отправить</button>
@@ -65,7 +65,7 @@ export default {
       }
       try {
         let response = await this.$axios.$post("/director/", formData, config);
-        this.$router.push("/contacts/thanks");
+        this.$router.push("/thanks");
       } catch (e) {
         console.log(e);
       }

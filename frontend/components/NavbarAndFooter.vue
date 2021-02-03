@@ -109,6 +109,7 @@
                   <nuxt-link class="dropdown-item" to="/teachers/educationalandmethodicalwork/">Учебно-методическая работа</nuxt-link>
                   <nuxt-link class="dropdown-item" to="/teachers/additionaleducation/">Дополнительное образование</nuxt-link>
                   <nuxt-link class="dropdown-item" to="/teachers/seminars/">Республиканские семинары</nuxt-link>
+                  <nuxt-link class="dropdown-item" to="/teachers/certification/">Аттестация</nuxt-link>
                 </div>
               </li>
                 <li class="nav-item dropdown">

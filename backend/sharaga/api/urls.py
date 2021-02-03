@@ -14,6 +14,8 @@ router.register(r'info', InfoViewSet)
 router.register(r'educationalandmethodicalwork', EducationalandMethodicalWorkViewSet)
 router.register(r'additionaleducation', AdditionalEducationViewSet)
 router.register(r'seminars', SeminarsViewSet)
+router.register(r'certification', CertificationViewSet)
+router.register(r'callbackeducation', CallbackEducationViewSet)
 # URLs настраиваются автоматически роутером
 urlpatterns = [
     path("", include(router.urls)),

@@ -2,6 +2,7 @@ from rest_framework import routers
 from django.urls import path, include
 from contacts.views import *
 from teachers.views import *
+from students.views import *
 
 # Создаем router и регистрируем наш ViewSet
 router = routers.SimpleRouter()
@@ -16,6 +17,7 @@ router.register(r'additionaleducation', AdditionalEducationViewSet)
 router.register(r'seminars', SeminarsViewSet)
 router.register(r'certification', CertificationViewSet)
 router.register(r'callbackeducation', CallbackEducationViewSet)
+router.register(r'students', StudentsViewSet)
 # URLs настраиваются автоматически роутером
 urlpatterns = [
     path("", include(router.urls)),

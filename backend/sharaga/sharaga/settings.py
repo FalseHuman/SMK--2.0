@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'contacts.apps.ContactsConfig',
     'teachers.apps.TeachersConfig',
+    'students.apps.StudentsConfig',
     'corsheaders',
 ]
 

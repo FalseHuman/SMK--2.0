@@ -56,7 +56,7 @@
               Студентам
             </a>
             <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"  href="/student">Нормативные документы</a>
+              <!--<a class="dropdown-item"  href="/student">Нормативные документы</a>
               <a class="dropdown-item"  href="#">Культура и спорт</a>
               <a class="dropdown-item"  href="#">Общежитие</a>
               <a class="dropdown-item"  href="#">Студенческий совет</a>
@@ -66,7 +66,12 @@
               <a class="dropdown-item"  href="#">Аккредитация выпускников</a>
               <a class="dropdown-item"  href="#">Страница педагог-психолога</a>
               <a class="dropdown-item"  href="#">Студенческий профсоюз</a>
-              <a class="dropdown-item"  href="#">Стипендия Главы РБ</a>
+              <a class="dropdown-item"  href="#">Стипендия Главы РБ</a>-->
+              <template v-for="article in students">
+              <div :key="article.id">
+                <nuxt-link class="dropdown-item" :to="`/students/${article.id}`">{{article.title}}</nuxt-link>
+              </div> 
+            </template>
             </div>
           </li>
                       <li class="nav-item dropdown">
@@ -159,12 +164,22 @@
 </template>
 <script>
 export default {
-    head () {
-    return {
-        script: [
-      ],
+  async asyncData({ $axios, params }) {
+    try {
+      let students = await $axios.$get(`/students/`);
+      //return { students }
+      console.log(students)
+    } catch (e) {
+      return { students: []};
     }
-  }
+  },
+  data({ params }) {
+    return {
+      students: {
+      },
+    };
+  },
+
 }
 </script>
 <style>

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'teachers.apps.TeachersConfig',
     'students.apps.StudentsConfig',
+    'info.apps.InfoConfig',
     'corsheaders',
 ]
 

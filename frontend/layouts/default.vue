@@ -3,6 +3,5 @@
     <NavbarAndFooter />
   </div>
 </template>
-
 <style>
 </style>

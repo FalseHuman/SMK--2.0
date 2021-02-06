@@ -13,12 +13,12 @@
                 </div>
              </template>
           <form @submit.prevent="submitCallback">
-            <input type="text"  v-model="callback.name" class="form-control" placeholder="ФИО" name ="name" required> <br>
-            <input type="email" v-model=" callback.email" class="form-control" placeholder="Адрес эл.почты" id="exampleInputEmail1" aria-describedby="emailHelp" required> <br>
-            <textarea  class="form-control" v-model=" callback.text" name="text" cols="145"  required=""  placeholder="Текст обращения" rows="5" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea><br>
+            <input type="text"  v-model="callback.name" class="form-control size-navbar-text" placeholder="ФИО" name ="name" required> <br>
+            <input type="email" v-model=" callback.email" class="form-control size-navbar-text" placeholder="Адрес эл.почты" id="exampleInputEmail1" aria-describedby="emailHelp" required> <br>
+            <textarea  class="form-control size-navbar-text" v-model=" callback.text" name="text" cols="145"  required=""  placeholder="Текст обращения" rows="5" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea><br>
             <label for="exampleFormControlFile1">Загрузить файл</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" @change="onFileChange">
-            <button  class="btn btn-outline-primary mt-4" type="submit">Отправить</button>
+            <input type="file" class="form-control-file size-navbar-text" id="exampleFormControlFile1" @change="onFileChange">
+            <button  class="btn btn-outline-primary mt-4 size-navbar-text" type="submit">Отправить</button>
           </form>
         </div>
       

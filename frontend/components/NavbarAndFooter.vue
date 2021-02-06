@@ -32,41 +32,18 @@
           Cведения о колледже
         </a>
         <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="">Основные сведения</a>
-            <a class="dropdown-item" href="#">Структура и органы <br> управления колледжем</a>
-            <a class="dropdown-item" href="#">Документы</a>
-            <a class="dropdown-item" href="#">Образование</a>
-            <a class="dropdown-item" href="#">Образовательные стандарты</a>
-            <a class="dropdown-item" href="#">Педагогический состав</a>
-            <a class="dropdown-item" href="#">Материально-техническое<br>обеспечение<br>и оснащенность<br>образовательного процесса</a>
-            <a class="dropdown-item" href="#">Стипендии и иные виды<br>материальной поддержки</a>
-            <a class="dropdown-item" href="#">Платные образовательные<br>услуги</a>
-            <a class="dropdown-item" href="#">Финансово-хозяйственная<br>деятельность</a>
-            <a class="dropdown-item" href="#">Вакантные места<br>для приема (перевода)</a>
-            <a class="dropdown-item" href="#">Обработка персональных данных</a>
-            <a class="dropdown-item" href="#">Противодействие коррупции</a>
-            <a class="dropdown-item" href="#">Правовые основы противодействия <br> экстремизму и терроризму</a>
-            <a class="dropdown-item" href="#">Вакантные должности</a>
-            <a class="dropdown-item" href="#">Информационная безопасность</a>
-            <a class="dropdown-item" href="#">Олимпиада</a>
+            <template v-for="article in info">
+              <div :key="article.id">
+                <nuxt-link class="dropdown-item" :to="`/info/${article.id}`">{{article.title}}</nuxt-link>
+              </div> 
+            </template>
         </div>
       </li>
                 <li class="nav-item dropdown">
             <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Студентам
             </a>
-            <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-              <!--<a class="dropdown-item"  href="/student">Нормативные документы</a>
-              <a class="dropdown-item"  href="#">Культура и спорт</a>
-              <a class="dropdown-item"  href="#">Общежитие</a>
-              <a class="dropdown-item"  href="#">Студенческий совет</a>
-              <a class="dropdown-item"  href="#">Безопасность жизнедеятельности</a>
-              <a class="dropdown-item"  href="#">Учебно-методические материалы</a>
-              <a class="dropdown-item"  href="#">Трудоустройство выпускников</a>
-              <a class="dropdown-item"  href="#">Аккредитация выпускников</a>
-              <a class="dropdown-item"  href="#">Страница педагог-психолога</a>
-              <a class="dropdown-item"  href="#">Студенческий профсоюз</a>
-              <a class="dropdown-item"  href="#">Стипендия Главы РБ</a>-->
+              <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
               <template v-for="article in students">
               <div :key="article.id">
                 <nuxt-link class="dropdown-item" :to="`/students/${article.id}`">{{article.title}}</nuxt-link>
@@ -163,24 +140,29 @@
 </div>
 </template>
 <script>
-export default {
-  async asyncData({ $axios, params }) {
-    try {
-      let students = await $axios.$get(`/students/`);
-      //return { students }
-      console.log(students)
-    } catch (e) {
-      return { students: []};
+  export default {
+  data (){
+    return{
+      students : [],
+      info: []
+      }
+  },
+  created(){
+    this.loadStudents()
+    this.loadInfo()
+  },
+  methods:{
+    async loadStudents(){
+    this.students = await fetch (`http://127.0.0.1:8000/api/students/`).then(response => response.json())
+    //let posts = await this.$axios.$get(`/students`).then(response => response.json())
+    //this.posts = posts
+    //return {post}
+    },
+    async loadInfo(){
+    this.info = await fetch (`http://127.0.0.1:8000/api/info/`).then(response => response.json())
     }
-  },
-  data({ params }) {
-    return {
-      students: {
-      },
-    };
-  },
-
-}
+  }
+  }
 </script>
 <style>
 @font-face {

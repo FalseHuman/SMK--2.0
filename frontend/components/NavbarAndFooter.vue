@@ -31,10 +31,10 @@
         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cведения о колледже
         </a>
-        <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu size-navbar-text textcols" aria-labelledby="navbarDropdown">
             <template v-for="article in info">
               <div :key="article.id">
-                <nuxt-link class="dropdown-item" :to="`/info/${article.id}`">{{article.title}}</nuxt-link>
+                <nuxt-link class="dropdown-item textcols-item" :to="`/info/${article.id}`">{{article.title}}</nuxt-link>
               </div> 
             </template>
         </div>
@@ -55,31 +55,12 @@
               <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Абитурентам
               </a>
-              <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/applicant">Абитуриенту</a>
-                <a class="dropdown-item" href="#">Контрольные цифры <br> приема граждан</a>
-                <a class="dropdown-item" href="#">Правила приема</a> 
-                <a class="dropdown-item" href="#">Положение об <br>индивидуальных достижениях</a> 
-                <a class="dropdown-item" href="#">Локальные нормативные акты</a>
-                <a class="dropdown-item" href="#">Перечень специальностей</a>
-                <a class="dropdown-item" href="#">График приема документов</a>
-                <a class="dropdown-item" href="#">Условия приема по<br>договорам об оказании платных<br>образовательных услуг</a> 
-                <a class="dropdown-item" href="#">Информация о необходимости<br> прохождения  поступающими<br> обязательного <br> предварительного <br>медицинского осмотра</a>
-                <a class="dropdown-item" href="#">Примерные тесты <br> вступительных испытаний</a>
-                <a class="dropdown-item" href="#">Особенности проведения <br> вступительных  испытаний <br> для инвалидов и лиц <br>  с ограниченными <br>возможностями здоровья</a>
-                <a class="dropdown-item" href="#">Информация о возможности<br> подачи документов по почте</a>
-                <a class="dropdown-item" href="#">Подача документов <br> по электронной почте</a>
-                <a class="dropdown-item" href="#">Перечень и сроки <br> подачи документов</a>
-                <a class="dropdown-item" href="#">Информация о наличии <br> общежития  и количестве мест <br> в общежитиях, выделяемых <br> для иногороднх поступающих</a>
-                <a class="dropdown-item" href="#">Приказы о зачислении</a>
-                <a class="dropdown-item" href="#">Количество <br> поданных заявлений</a>
-                <a class="dropdown-item" href="#">Подача и рассмотрение <br> апелляций</a>
-                <a class="dropdown-item" href="#">Заявление на  поступление  <br>в колледж</a>
-                <a class="dropdown-item" href="#">Обращение граждан  по <br>вопросам приёма</a>
-                <a class="dropdown-item" href="#">Целевое обучение</a>
-                <a class="dropdown-item" href="#">Согласие на обработку <br>персональных данных</a>
-                <a class="dropdown-item" href="#">Вступительные испытания</a>
-                <a class="dropdown-item" href="#">Буклет для поступающих</a>
+              <div class="dropdown-menu size-navbar-text  textcols" aria-labelledby="navbarDropdown">
+                <template v-for="article in abiturents">
+                  <div :key="article.id">
+                    <nuxt-link class="dropdown-item  textcols-item" :to="`/abiturents/${article.id}`">{{article.title}}</nuxt-link>
+                  </div> 
+                </template>
                 </div>
             </li>
               <li class="nav-item dropdown">
@@ -144,12 +125,14 @@
   data (){
     return{
       students : [],
-      info: []
+      info: [],
+      abiturents: []
       }
   },
   created(){
     this.loadStudents()
     this.loadInfo()
+    this.loadAbiturents()
   },
   methods:{
     async loadStudents(){
@@ -160,6 +143,9 @@
     },
     async loadInfo(){
     this.info = await fetch (`http://127.0.0.1:8000/api/info/`).then(response => response.json())
+    },
+    async loadAbiturents(){
+    this.abiturents = await fetch (`http://127.0.0.1:8000/api/abiturents/`).then(response => response.json())
     }
   }
   }
@@ -227,9 +213,7 @@
       display: inline-block;
       width: 30%;
       vertical-align: top;
-    margin-left:  -10% !important;
-    margin-right: 25% !important;
-    font-size: 8px !important;
+    font-size: 13px !important;
   }
   .textcols .textcols-item:last-child {
       margin-right: 0 ;
@@ -320,11 +304,9 @@
   .textcols-item {
       white-space: normal;	
       display: inline-block;
-      width: 30%;
+      width: 100%;
       vertical-align: top;
-    margin-left: 0;
-    margin-right: 21%;
-    font-size: 11px;
+      font-size: 16px;
   }
   .textcols .textcols-item:last-child {
       margin-right: 0 ;
@@ -374,5 +356,6 @@ table td, table th {
      content: attr(data-label);
      font-weight: bold;
 }
+
 }
 </style>

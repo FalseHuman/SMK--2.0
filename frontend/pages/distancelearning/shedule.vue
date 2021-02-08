@@ -2,18 +2,18 @@
 <div>
       <div class="row justify-content-center mt-2">
       <div class="col-6 col-sm-3 mb-2">
+        <form action="javascript:history.go(-1)" class="mt-2">
+            <button class="btn btn-outline-success my-2 my-sm-0">Назад</button>
+        </form>
       </div>
         <div class="col-9">
-             <template v-for="article in distance">
+             <template v-for="article in shedule">
               <div :key="article.id">        
                 <p class="center">{{article.title}}</p>
                 <hr>
                 <p class="" v-html="article.text"></p>
                 </div>
              </template>
-            <a href="">Специальность: 31.02.01 Лечебное дело</a> <br>
-            <a href="">Специальность: 34.02.01 Сестринское дело</a> <br>
-            <a href="">Специальность: 31.02.02 Акушерское дело</a>
         </div>
       
         <!-- Заставит следующие столбцы переходить на новую строку -->
@@ -26,21 +26,21 @@
 export default {
   head() {
     return {
-      title: "Дистанционное обучение"
+      title: "Расписание"
     };
   },
     async asyncData({ $axios }) {
     try {
-      let distance = await $axios.$get(`/distance/`);
-      return { distance  };
+      let shedule = await $axios.$get(`/shedule/`);
+      return { shedule  };
 
     } catch (e) {
-      return { distance: [] };
+      return { shedule: [] };
     }
   },
   data() {
     return {
-      distance : [],
+      shedule : [],
     };
   },
 };

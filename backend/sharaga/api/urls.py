@@ -5,6 +5,7 @@ from teachers.views import *
 from students.views import *
 from info.views import *
 from abiturents.views import *
+from distancelearning.views import *
 
 # Создаем router и регистрируем наш ViewSet
 router = routers.SimpleRouter()
@@ -22,6 +23,8 @@ router.register(r'callbackeducation', CallbackEducationViewSet)
 router.register(r'students', StudentsViewSet)
 router.register(r'info', InfoViewSet)
 router.register(r'abiturents', AbiturentsViewSet)
+router.register(r'distance', DistanceViewSet)
+router.register(r'shedule', SheduleViewSet)
 # URLs настраиваются автоматически роутером
 urlpatterns = [
     path("", include(router.urls)),

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'info.apps.InfoConfig',
     'abiturents.apps.AbiturentsConfig',
+    'distancelearning.apps.DistancelearningConfig',
     'corsheaders',
 ]
 

@@ -76,9 +76,9 @@
                 </div>
               </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link " href="/distancelearning" id="navbarDropdown"  role="button"  aria-haspopup="true" aria-expanded="false">
+                  <nuxt-link class="nav-link " to="/distancelearning/" id="navbarDropdown"  role="button"  aria-haspopup="true" aria-expanded="false">
                     Дистанционное обучение
-                  </a>
+                  </nuxt-link>
                 </li>
             <li class="nav-item dropdown">
           <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

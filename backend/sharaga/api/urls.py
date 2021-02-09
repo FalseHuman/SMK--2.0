@@ -25,6 +25,9 @@ router.register(r'info', InfoViewSet)
 router.register(r'abiturents', AbiturentsViewSet)
 router.register(r'distance', DistanceViewSet)
 router.register(r'shedule', SheduleViewSet)
+router.register(r'feldhers', FeldhersViewSet)
+router.register(r'nurses', NursesViewSet)
+router.register(r'obstetrician', ObstetricianViewSet)
 # URLs настраиваются автоматически роутером
 urlpatterns = [
     path("", include(router.urls)),

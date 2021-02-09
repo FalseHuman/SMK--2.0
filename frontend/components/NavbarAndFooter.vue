@@ -110,7 +110,7 @@
     <br>
     <div>Мы в соцсетях:</div>
     <div>
-      <a target="_blank" href="https://vk.com/slv_mk"><img src="/YWVaQgf9JkQ.jpg" witdh="50px" height="50px" alt="VK"></a>
+      <a target="_blank" href="https://vk.com/slv_mk"><img src="https://vk.com/images/icons/pwa/apple/default.png?11" style="border-radius: 5px; margin-right: 5px;" witdh="35px" height="35px" alt="VK"></a> <!--src="/YWVaQgf9JkQ.jpg"-->
       <a target="_blank" href="https://www.instagram.com/salavatmedcollege/?igshid=uqq47wy5ebw3"><img src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png" alt="Instagram" witdh="35px" height="35px"></a>
   </div>
   <br>
@@ -356,6 +356,5 @@ table td, table th {
      content: attr(data-label);
      font-weight: bold;
 }
-
 }
 </style>

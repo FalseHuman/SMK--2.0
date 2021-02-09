@@ -11,3 +11,17 @@ class DistanceViewSet(viewsets.ModelViewSet):
 class SheduleViewSet(viewsets.ModelViewSet):
     queryset = Shedule.objects.all().order_by('pub_date')
     serializer_class = SheduleSerializer
+
+class FeldhersViewSet(viewsets.ModelViewSet):
+    queryset = Feldhers.objects.all().order_by('id')
+    serializer_class = FeldhersSerializers
+
+
+class NursesViewSet(viewsets.ModelViewSet):
+    queryset = Nurses.objects.all().order_by('id')
+    serializer_class = NursesSerializers
+
+class ObstetricianViewSet(viewsets.ModelViewSet):
+    queryset = Obstetrician.objects.all().order_by('id')
+    serializer_class = ObstetricianSerializers
+

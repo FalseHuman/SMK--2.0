@@ -8,9 +8,13 @@
             </form>
       </div>
         <div class="col-9">      
-            <p class="center">{{nurses.title}}</p>
+            <p class="center">{{obstetrician.title}}</p>
             <hr>
-            <p class="" v-html="nurses.text"></p>
+                  <template v-for="article in obstetricians">
+                  <div :key="article.id">
+                    <nuxt-link  :to="`${article.id}`">{{article.title}}</nuxt-link>
+                  </div> 
+                </template>
         </div>
       
         <!-- Заставит следующие столбцы переходить на новую строку -->
@@ -24,22 +28,25 @@
 export default {
   async asyncData({ $axios }) {
     try {
-      let nurses = await $axios.$get(`/nurses/1/`);
-      return { nurses }
+      let obstetrician = await $axios.$get(`/obstetrician/1/`);
+      let obstetricians = await $axios.$get(`/obstetricians/`);
+      return { obstetrician, obstetricians }
     } catch (e) {
-      return { nurses: [] };
+      return { obstetrician: [], obstetricians: [] };
     }
   },
   data({ params }) {
     return {
-      nurses: {
+      obstetrician: {
+      },
+      obstetricians:{
       },
 
     };
   },
     head() {
     return {
-      title:  this.nurses.title,
+      title:  this.obstetrician.title,
     };
   },
 };

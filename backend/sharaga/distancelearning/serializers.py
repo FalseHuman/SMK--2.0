@@ -32,3 +32,8 @@ class ObstetricianSerializers(serializers.ModelSerializer):
     class Meta:
         model = Obstetrician
         fields = ('id', 'title', 'text')
+
+class PredmetsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Predmets
+        fields = ('id', 'title','group','text')

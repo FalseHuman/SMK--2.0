@@ -11,9 +11,13 @@
             </form>
       </div>
         <div class="col-9">      
-            <p class="center">{{feldhers.title}}</p>
+            <p class="center">{{feldher.title}}</p>
             <hr>
-            <p class="" v-html="feldhers.text"></p>
+                  <template v-for="article in feldhers">
+                  <div :key="article.id">
+                    <nuxt-link  :to="`${article.id}`">{{article.title}}</nuxt-link>
+                  </div> 
+                </template>
         </div>
       
         <!-- Заставит следующие столбцы переходить на новую строку -->
@@ -27,22 +31,26 @@
 export default {
   async asyncData({ $axios }) {
     try {
-      let feldhers = await $axios.$get(`/feldhers/1/`);
-      return { feldhers }
+      let feldher = await $axios.$get(`/feldhers/1/`);
+      let feldhers = await $axios.$get(`/feldher/`);
+      return { feldher, feldhers }
+      //console.log(feldhers)
     } catch (e) {
-      return { feldhers: [] };
+      return { feldher: [], feldhers:[] };
     }
   },
   data({ params }) {
     return {
-      feldhers: {
+      feldher: {
+      },
+      feldhers:{   
       },
 
     };
   },
     head() {
     return {
-      title:  this.feldhers.title,
+      title:  this.feldher.title,
     };
   },
 };

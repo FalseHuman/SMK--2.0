@@ -18,6 +18,9 @@ export default {
       {
         src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
       },
+      {
+        src: 'https://cdn.jsdelivr.net/npm/translate@1/translate.min.js'
+      }
     ],
     meta: [
       { charset: 'utf-8' },

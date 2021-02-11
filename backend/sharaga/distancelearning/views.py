@@ -25,3 +25,7 @@ class ObstetricianViewSet(viewsets.ModelViewSet):
     queryset = Obstetrician.objects.all().order_by('id')
     serializer_class = ObstetricianSerializers
 
+class PredmetsViewSet(viewsets.ModelViewSet):
+    queryset = Predmets.objects.all().order_by('id')
+    serializer_class = PredmetsSerializers
+

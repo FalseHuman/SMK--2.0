@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class StudentsConfig(AppConfig):
     name = 'students'
-    verbose_name = 'Студентам'
+    verbose_name = 'Вкладка - Студентам'

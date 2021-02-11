@@ -8,7 +8,7 @@
               <div :key="article.id">        
                 <p class="center">{{article.title}}</p>
                 <hr>
-                <nuxt-link to="feldhers">Специальность: 31.02.01 Лечебное дело</nuxt-link> <br>
+                <nuxt-link to="feldhers/">Специальность: 31.02.01 Лечебное дело</nuxt-link> <br>
                 <nuxt-link to="nurses/">Специальность: 34.02.01 Сестринское дело</nuxt-link> <br>
                 <nuxt-link to="obstetrician/">Специальность: 31.02.02 Акушерское дело</nuxt-link>
                 <p class="" v-html="article.text"></p>

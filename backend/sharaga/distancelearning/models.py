@@ -48,3 +48,14 @@ class Obstetrician(models.Model):
         verbose_name ='Список Акушерского дела'
         verbose_name_plural ='Список Акушерского дела'
 
+class Predmets(models.Model):
+    title = models.CharField('Название предмета', max_length=200)
+    group = models.CharField('Название группы', max_length=200)
+    text = RichTextUploadingField('Текст')
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name ='Предмет'
+        verbose_name_plural ='Предметы'
+
+

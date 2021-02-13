@@ -7,9 +7,12 @@ from info.views import *
 from abiturents.views import *
 from distancelearning.views import *
 from groups.views import *
+from home.views import *
 
 # Создаем router и регистрируем наш ViewSet
 router = routers.SimpleRouter()
+router.register(r'article', ArticleViewSet)
+router.register(r'home', HomeViewSet)
 router.register(r'contacts', ContactsViewSet)
 router.register(r'hotline', HotlineViewSet)
 router.register(r'controls', ControlsViewSet)

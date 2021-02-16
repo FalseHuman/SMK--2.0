@@ -29,10 +29,10 @@
 export default {
   head() {
     return {
-      title: this.home.title
+      title: "Главная страница"
     };
   },
-    async asyncData({ $axios, params }) {
+    async asyncData({ $axios }) {
     try {
       let home = await $axios.$get(`/home/1`);
       let articles = await $axios.$get(`/article`);

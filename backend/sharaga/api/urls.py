@@ -11,8 +11,7 @@ from home.views import *
 
 # Создаем router и регистрируем наш ViewSet
 router = routers.SimpleRouter()
-router.register(r'article', ArticleViewSet)
-router.register(r'home', HomeViewSet)
+
 router.register(r'contacts', ContactsViewSet)
 router.register(r'hotline', HotlineViewSet)
 router.register(r'controls', ControlsViewSet)
@@ -36,6 +35,8 @@ router.register(r'obstetricians', ObstetricianDistanceViewSet)
 router.register(r'feldher', FeldhersDistanceViewSet)
 router.register(r'nurs', NursesDistanceViewSet)
 router.register(r'predmets', PredmetsViewSet)
+router.register(r'article', ArticleViewSet)
+router.register(r'home', HomeViewSet)
 
 # URLs настраиваются автоматически роутером
 urlpatterns = [

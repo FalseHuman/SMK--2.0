@@ -17,7 +17,7 @@
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
  
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/" title="На главную">
       <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="">
       CMK</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

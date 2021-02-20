@@ -23,12 +23,12 @@
 export default {
   head() {
     return {
-      title: "Республиканские информационно-обучающие педагогические семинары",
+      title: "Справочная информация",
     };
   },
    async asyncData({ $axios, params }) {
     try {
-      let info = await $axios.$get(`/info/`);
+      let info = await $axios.$get(`/infoteacher/`);
       return { info  };
       //console.log(reference)
 

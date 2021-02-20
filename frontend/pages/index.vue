@@ -1,6 +1,6 @@
 <template>
 <div>
-<p v-html="home.text"></p>
+<template><p class="mt-2" v-html="home.text"></p></template>
 <h2>Новости и объявления колледжа:</h2>
 <main class="container">
     <div class="row mb-2">

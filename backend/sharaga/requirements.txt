@@ -1,9 +1,0 @@
-Django==2.2.1
-djangorestframework
-django-cors-headers
-whitenoise
-dj-database-url
-gunicorn
-psycopg2
-pytz
-django-ckeditor

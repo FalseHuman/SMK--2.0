@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 
-class InfoViewSet(viewsets.ModelViewSet):
+class InfViewSet(viewsets.ModelViewSet):
     queryset = info.objects.all().order_by('-data')
     serializer_class = InfoSerializer
 

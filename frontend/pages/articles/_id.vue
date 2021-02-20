@@ -1,9 +1,9 @@
 <template>
     <div>
-      <article class="blog-post">
-        <h2 class="blog-post-title">{{article.title}}</h2>
-        <p class="blog-post-meta">{{formatDate(article.pub_data)}}</p>
-        <p v-html="article.text"></p>
+      <article class="blog-post mobile-article">
+        <h2 class="blog-post-title center">{{article.title}}<p class="blog-post-meta">{{formatDate(article.pub_data)}}</p></h2>
+        <hr>
+        <p  v-html="article.text"></p>
       </article>
     </div>
     

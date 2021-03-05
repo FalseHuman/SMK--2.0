@@ -1,0 +1,23 @@
+from rest_framework import serializers
+
+from .models import *
+
+class TabsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tabs
+        depth = 1
+        fields = ( 'url', 'title', 'sections')
+        lookup_field =  'sections'
+        extra_kwargs ={
+            'url': {'lookup_field': 'sections'},
+        }
+
+class TabSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Section
+        depth = 1
+        fields = ( 'url', 'title','slug', 'title_article', 'name_tab', 'body')
+        lookup_field =  'slug'
+        extra_kwargs ={
+            'url': {'lookup_field': 'slug'},
+        }

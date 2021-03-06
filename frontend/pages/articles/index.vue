@@ -15,7 +15,7 @@ export default {
       title: "Список статей"
     };
   },
-    async asyncData({ $axios, params }) {
+    async asyncData({ $axios}) {
     try {
       let articles = await $axios.$get(`/article/`);
       return { articles  };

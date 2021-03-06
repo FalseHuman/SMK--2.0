@@ -1,6 +1,6 @@
 <template>
 <div>
-<p v-html="home.text"></p>
+<template><p class="mt-2" v-html="home.text"></p></template>
 <h2>Новости и объявления колледжа:</h2>
 <main class="container">
     <div class="row mb-2">
@@ -29,10 +29,10 @@
 export default {
   head() {
     return {
-      title: this.home.title
+      title: "Главная страница"
     };
   },
-    async asyncData({ $axios, params }) {
+    async asyncData({ $axios }) {
     try {
       let home = await $axios.$get(`/home/1`);
       let articles = await $axios.$get(`/article`);

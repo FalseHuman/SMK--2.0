@@ -16,7 +16,11 @@
          </header>
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
  
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+=======
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+>>>>>>> master
       <nuxt-link class="navbar-brand" to="/" title="На главную">
       <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="">
       CMK</nuxt-link>
@@ -106,7 +110,7 @@
         образовательное учреждение <br>
         Республики Башкортостан
         «Салаватский медицинский колледж»</p>
-    <div><a href="#" target="_blank">Карта сайта</a></div>
+    <div><nuxt-link to="/sitemap" target="_blank">Карта сайта</nuxt-link></div>
     <br>
     <div>Мы в соцсетях:</div>
     <div>
@@ -190,6 +194,9 @@
   padding-right: 50px;
    }
   }
+   iframe{
+   width: 500px;
+ }
   @media (max-width: 992px){
    body{
     width: 100%;
@@ -202,11 +209,20 @@
    body{
     width: 100%;
   height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
   
    }
- 
+   .container table td {
+    display: flex !important;
+    justify-content: center !important;
+}
+ .mobile-article{
+   text-align: center;
+ }
+ iframe{
+   width: 100%;
+ }
    .footer{
     width: 55% !important;
    }

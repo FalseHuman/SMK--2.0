@@ -12,8 +12,7 @@ from tab.views import *
 
 # Создаем router и регистрируем наш ViewSet
 router = routers.SimpleRouter()
-router.register(r'article', ArticleViewSet)
-router.register(r'home', HomeViewSet)
+
 router.register(r'contacts', ContactsViewSet)
 router.register(r'hotline', HotlineViewSet)
 router.register(r'controls', ControlsViewSet)
@@ -26,7 +25,7 @@ router.register(r'seminars', SeminarsViewSet)
 router.register(r'certification', CertificationViewSet)
 router.register(r'callbackeducation', CallbackEducationViewSet)
 router.register(r'students', StudentsViewSet)
-router.register(r'info', InfoViewSet)
+router.register(r'infoteacher', InfViewSet)
 router.register(r'abiturents', AbiturentsViewSet)
 router.register(r'distance', DistanceViewSet)
 router.register(r'shedule', SheduleViewSet)
@@ -37,8 +36,13 @@ router.register(r'obstetricians', ObstetricianDistanceViewSet)
 router.register(r'feldher', FeldhersDistanceViewSet)
 router.register(r'nurs', NursesDistanceViewSet)
 router.register(r'predmets', PredmetsViewSet)
+<<<<<<< HEAD
 router.register(r'tab', OneViewSet)
 router.register(r'tabs_name', TwoViewSet)
+=======
+router.register(r'article', ArticleViewSet)
+router.register(r'home', HomeViewSet)
+>>>>>>> master
 
 # URLs настраиваются автоматически роутером
 urlpatterns = [

@@ -1,8 +1,8 @@
 <template>
 <div>
       <div class="row justify-content-center mt-2">
-      <div class="col-6 col-sm-3 mb-2 size-navbar-text">
-          <div class="list-group text-wrap block size-navbar-tex">
+      <div class="col-7 col-sm-3 mb-2">
+          <div class="list-group text-wrap bloc">
              <template v-for="article in infs">
               <div :key="article.id">
                 <nuxt-link exact no-prefetch active-class="active" class="list-group-item list-group-item-action text-center" :to="`/info/${article.id}`">{{article.title}}</nuxt-link>
@@ -13,7 +13,7 @@
         <div class="col-9">      
             <p class="center">{{info.title}}</p>
             <hr>
-            <p class="size-navbar-text" v-html="info.text"></p>
+            <p class="" v-html="info.text"></p>
         </div>
       
         <!-- Заставит следующие столбцы переходить на новую строку -->

@@ -11,7 +11,7 @@
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary" v-if="article.status === 'Новости'">{{article.status}}</strong>
           <strong class="d-inline-block mb-2 text-success" v-else>{{article.status}}</strong>
-          <h3 class="mb-0">{{article.title}}</h3>
+          <h4 class="mb-0">{{article.title}}</h4>
           <div class="mb-1 text-muted">{{formatDate(article.pub_data)}}</div>
           <p class="card-text mb-auto" v-html="article.min_text + '...'"></p>
           <nuxt-link  class="stretched-link" :to="`articles/${article.id}`">Подробнее</nuxt-link>
@@ -58,6 +58,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.container{
+  min-width: 100% !important;
+}
 </style>

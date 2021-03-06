@@ -16,7 +16,11 @@
          </header>
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
  
+<<<<<<< HEAD
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+=======
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+>>>>>>> master
       <nuxt-link class="navbar-brand" to="/" title="На главную">
       <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="">
       CMK</nuxt-link>
@@ -56,7 +60,7 @@
                 Абитурентам
               </a>
               <div class="dropdown-menu size-navbar-text  textcols" aria-labelledby="navbarDropdown">
-                <template v-for="article in abiturents">
+                <template v-for="article in abiturent">
                   <div :key="article.id">
                     <nuxt-link class="dropdown-item  textcols-item" :to="`/abiturents/${article.id}`">{{article.title}}</nuxt-link>
                   </div> 
@@ -121,13 +125,17 @@
 </div>
 </template>
 <script>
+  //import axios from "~/plugins/axios";
   export default {
+  
   data (){
     return{
       students : [],
       info: [],
-      abiturents: []
+      abiturents: [],
+      abiturent: [],
       }
+      //console.log(abiturents)
   },
   created(){
     this.loadStudents()
@@ -144,8 +152,10 @@
     async loadInfo(){
     this.info = await fetch (`http://127.0.0.1:8000/api/info/`).then(response => response.json())
     },
-    async loadAbiturents(){
-    this.abiturents = await fetch (`http://127.0.0.1:8000/api/abiturents/`).then(response => response.json())
+    async loadAbiturents($axios, params){
+    this.abiturents = await this.$axios.get( `/abiturents/`)
+    this.abiturent = this.abiturents.data
+    //console.log(abiturent)
     }
   }
   }

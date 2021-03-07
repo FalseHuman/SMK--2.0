@@ -7,6 +7,7 @@ from .serializers import *
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all().order_by('-pub_data')
     serializer_class = ArticleSerializer
+    lookup_field = 'slug'
 
 class HomeViewSet(viewsets.ModelViewSet):
     queryset = Home.objects.all().order_by('id')

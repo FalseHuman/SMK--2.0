@@ -7,7 +7,11 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'text','min_text', 'status', 'pub_data')
+        fields = ('url', 'title', 'text','min_text', 'status', 'pub_data', 'slug')
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'},
+        }
 
 class HomeSerializer(serializers.ModelSerializer):
 

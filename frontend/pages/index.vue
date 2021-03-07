@@ -5,7 +5,7 @@
 <main class="container">
     <div class="row mb-2">
     <template v-for="article in articles">
-    <div class="col-md-6" :key="article.id">
+    <div class="col-md-6" :key="article.url">
 
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-3 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
@@ -14,7 +14,7 @@
           <h4 class="mb-0">{{article.title}}</h4>
           <div class="mb-1 text-muted">{{formatDate(article.pub_data)}}</div>
           <p class="card-text mb-auto" v-html="article.min_text + '...'"></p>
-          <nuxt-link  class="stretched-link" :to="`articles/${article.id}`">Подробнее</nuxt-link>
+          <nuxt-link  class="stretched-link" :to="`articles/${article.slug}`">Подробнее</nuxt-link>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@ export default {
     async asyncData({ $axios }) {
     try {
       let home = await $axios.$get(`/home/1`);
-      let articles = await $axios.$get(`/article`);
+      let articles = await $axios.$get(`/article/`);
       return { home, articles }
     } catch (e) {
       return { home: [], articles:[]};

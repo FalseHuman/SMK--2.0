@@ -16,8 +16,13 @@ class TabSerializer(serializers.ModelSerializer):
     class Meta:
         model = Section
         depth = 1
-        fields = ( 'url', 'title','slug', 'title_article', 'name_tab', 'body')
+        fields = ( 'url', 'title','slug', 'title_article', 'name_tab', 'body', 'my_field')
         lookup_field =  'slug'
         extra_kwargs ={
             'url': {'lookup_field': 'slug'},
         }
+
+class CallbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Callback
+        fields = "__all__"

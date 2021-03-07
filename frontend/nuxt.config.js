@@ -32,7 +32,7 @@ export default {
 
     ]
   },
-  loading: { color: "red"},
+  loading: { color: "green"},
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],

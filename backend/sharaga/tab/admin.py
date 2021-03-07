@@ -11,3 +11,7 @@ class TabsAdmin(admin.ModelAdmin):
 class SectionAdmin(admin.ModelAdmin):
     list_display = ('name_tab', 'title','title_article', 'slug')
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Callback)
+class CallbackAdmin(admin.ModelAdmin):
+    list_display = ('theme', 'name', 'email')

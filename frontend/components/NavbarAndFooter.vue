@@ -16,11 +16,7 @@
          </header>
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
  
-<<<<<<< HEAD
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-=======
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
->>>>>>> master
       <nuxt-link class="navbar-brand" to="/" title="На главную">
       <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="">
       CMK</nuxt-link>
@@ -31,70 +27,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"></ul>
     <ul class="navbar-nav mr-auto">
+    <template v-for="article in max_tab">
+    <div :key="article.url">
       <li class="nav-item dropdown">
-        <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Cведения о колледже
-        </a>
-        <div class="dropdown-menu size-navbar-text textcols" aria-labelledby="navbarDropdown">
-            <template v-for="article in info">
-              <div :key="article.id">
-                <nuxt-link class="dropdown-item textcols-item" :to="`/info/${article.id}`">{{article.title}}</nuxt-link>
-              </div> 
-            </template>
-        </div>
-      </li>
-                <li class="nav-item dropdown">
-            <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Студентам
-            </a>
-              <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-              <template v-for="article in students">
-              <div :key="article.id">
-                <nuxt-link class="dropdown-item" :to="`/students/${article.id}`">{{article.title}}</nuxt-link>
-              </div> 
-            </template>
-            </div>
-          </li>
-                      <li class="nav-item dropdown">
-              <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Абитурентам
-              </a>
-              <div class="dropdown-menu size-navbar-text  textcols" aria-labelledby="navbarDropdown">
-                <template v-for="article in abiturent">
-                  <div :key="article.id">
-                    <nuxt-link class="dropdown-item  textcols-item" :to="`/abiturents/${article.id}`">{{article.title}}</nuxt-link>
-                  </div> 
-                </template>
-                </div>
-            </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Преподавателям 
-                </a>
-                <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-                  <nuxt-link class="dropdown-item" to="/teachers/info">Справочная информация</nuxt-link>
-                  <nuxt-link class="dropdown-item" to="/teachers/educationalandmethodicalwork/">Учебно-методическая работа</nuxt-link>
-                  <nuxt-link class="dropdown-item" to="/teachers/additionaleducation/">Дополнительное образование</nuxt-link>
-                  <nuxt-link class="dropdown-item" to="/teachers/seminars/">Республиканские семинары</nuxt-link>
-                  <nuxt-link class="dropdown-item" to="/teachers/certification/">Аттестация</nuxt-link>
-                </div>
-              </li>
-                <li class="nav-item dropdown">
-                  <nuxt-link class="nav-link " to="/distancelearning/" id="navbarDropdown"  role="button"  aria-haspopup="true" aria-expanded="false">
-                    Дистанционное обучение
-                  </nuxt-link>
-                </li>
-            <li class="nav-item dropdown">
           <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Контакты
-          </a>
-          <div class="dropdown-menu size-navbar-text" aria-labelledby="navbarDropdown">
-            <nuxt-link  class="dropdown-item" to="/contacts">Контакты</nuxt-link >
-            <nuxt-link  class="dropdown-item" to="/contacts/hotline">Горячая линия</nuxt-link >
-            <nuxt-link  class="dropdown-item" to="/contacts/callback">Обратная связь</nuxt-link >
-            <nuxt-link  class="dropdown-item" to="/contacts/controls">Контакты контролирующих<br>организаций</nuxt-link >
-          </div>
+                  {{article.title}}
+            </a>
+              <div  class="dropdown-menu size-navbar-text">
+                <a v-for="item in tab" :key="item.url" >
+                  <nuxt-link class="dropdown-item" v-if="item.name_tab.title===article.title" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link>
+                </a>
+              </div>
         </li>
+    </div>
+    </template>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Введите запрос.." aria-label="Search">
@@ -130,32 +76,24 @@
   
   data (){
     return{
-      students : [],
-      info: [],
-      abiturents: [],
-      abiturent: [],
+      tabs: [],
+      tab: [],
+      max_tabs: [],
+      max_tab: [],
       }
-      //console.log(abiturents)
   },
   created(){
-    this.loadStudents()
-    this.loadInfo()
-    this.loadAbiturents()
+    this.loadTabs()
+    this.loadTab()
   },
   methods:{
-    async loadStudents(){
-    this.students = await fetch (`http://127.0.0.1:8000/api/students/`).then(response => response.json())
-    //let posts = await this.$axios.$get(`/students`).then(response => response.json())
-    //this.posts = posts
-    //return {post}
+    async loadTabs ($axios, params){
+    this.tabs = await this.$axios.get( `/tabs_name/`)
+    this.tab = this.tabs.data
     },
-    async loadInfo(){
-    this.info = await fetch (`http://127.0.0.1:8000/api/info/`).then(response => response.json())
-    },
-    async loadAbiturents($axios, params){
-    this.abiturents = await this.$axios.get( `/abiturents/`)
-    this.abiturent = this.abiturents.data
-    //console.log(abiturent)
+    async loadTab ($axios, params){
+    this.max_tabs = await this.$axios.get( `/tab/`)
+    this.max_tab = this.max_tabs.data
     }
   }
   }

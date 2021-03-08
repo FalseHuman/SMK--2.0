@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'distancelearning.apps.DistancelearningConfig',
     'tab.apps.TabConfig',
     'home.apps.HomeConfig',
     'corsheaders',
@@ -142,6 +141,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # add this
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
-import dj_database_url 
+'''import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+DATABASES['default'].update(prod_db)'''

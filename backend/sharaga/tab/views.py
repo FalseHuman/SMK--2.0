@@ -17,3 +17,12 @@ class TwoViewSet(viewsets.ModelViewSet):
 class CallbackViewSet(viewsets.ModelViewSet):
     queryset = Callback.objects.all().order_by('id')
     serializer_class = CallbackSerializer
+
+class PredmetsViewSet(viewsets.ModelViewSet):
+    queryset = Predmets.objects.all().order_by('id')
+    serializer_class = PredmetsSerializer
+    lookup_field =  'slug'
+
+class GroupsViewSet(viewsets.ModelViewSet):
+    queryset = Groups.objects.all().order_by('id')
+    serializer_class = GroupsSerializer   

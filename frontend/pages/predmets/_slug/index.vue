@@ -20,7 +20,7 @@ export default {
   async asyncData({ $axios, params }) {
     try {
         let predmets = await $axios.$get(`/predmets/`);
-        let predmet = await $axios.$get(`/predmets/${params.id}`);
+        let predmet = await $axios.$get(`/predmets/${params.slug}`);
 
         return { predmets, predmet}
     } catch (e) {

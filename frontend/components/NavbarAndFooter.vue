@@ -37,7 +37,6 @@
                 <a v-for="item in tab" :key="item.url" >
                   <nuxt-link class="dropdown-item" v-if="item.name_tab.title===article.title" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link>
                 </a>
-                <nuxt-link v-if="article.title==='Дистанционное обучение'" class="dropdown-item" to="/predmets">Домашнее задание</nuxt-link>
               </div>
         </li>
     </div>

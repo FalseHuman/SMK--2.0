@@ -27,20 +27,3 @@ class CallbackSerializer(serializers.ModelSerializer):
         model = Callback
         fields = "__all__"
 
-
-class GroupsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Callback
-        fields = "__all__"
-
-class PredmetsSerializer(serializers.ModelSerializer):
-        class Meta:
-            model = Predmets
-            depth = 1
-            fields = ( 'url', 'title','slug', 'group', 'text')
-            lookup_field =  'slug'
-            extra_kwargs ={
-                'url': {'lookup_field': 'slug'}
-                }
-
-

@@ -11,8 +11,6 @@ router.register(r'home', HomeViewSet)
 router.register(r'tab', OneViewSet)
 router.register(r'tabs_name', TwoViewSet)
 router.register(r'callback', CallbackViewSet)
-router.register(r'groups', GroupsViewSet)
-router.register(r'predmets', PredmetsViewSet)
 
 # URLs настраиваются автоматически роутером
 urlpatterns = [

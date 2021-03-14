@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
-    'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'salavatmk',
         'USER': 'postgres',
-        'PASSWORD': 'Rinat19861',
+        'PASSWORD': '12345',
 
     }
 }

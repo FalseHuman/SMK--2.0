@@ -6,14 +6,18 @@ from .models import *
 class TabsAdmin(admin.ModelAdmin):
     list_display = ('title', 'sections')
     search_fields = ('title', 'sections')
-    prepopulated_fields = {'sections': ('title',)}
+    readonly_fields=('sections',)
 
 @admin.register(Section)
 class SectionAdmin(admin.ModelAdmin):
     list_display = ('name_tab', 'title','title_article', 'slug')
     search_fields = ('title','title_article')
-    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('slug',)
 
 @admin.register(Callback)
 class CallbackAdmin(admin.ModelAdmin):
     list_display = ('theme', 'name', 'email')
+
+
+admin.site.site_title = "Салаватский медицинский колледж"
+admin.site.site_header = "Салаватский медицинский колледж"

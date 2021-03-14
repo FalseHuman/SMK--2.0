@@ -17,8 +17,8 @@
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
  
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-      <nuxt-link class="navbar-brand" to="/" title="На главную">
-      <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="">
+  <nuxt-link class="navbar-brand" to="/" title="На главную">
+  <img src="/logo-removebg-preview.png" width="25" height="25" class="d-inline-block align-top" alt="CMK">
       CMK</nuxt-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -42,11 +42,28 @@
     </div>
     </template>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Введите запрос.." aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+    <form class="form-inline my-2  my-lg-0 ">
+    <div class="container">
+      <div class="dropdown">
+        <input class="form-control mr-sm-2 " type="search" v-model="searchText" placeholder="Введите запрос..." aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit" data-toggle="dropdown" v-on:click="loadSearch">Поиск
+        <span class="caret"></span></button>
+        <ul v-if="searchText.length > 2 && searchData.length > 0" class="dropdown-menu">
+          <li class="dropdown-item">Слово "{{searchText}}" найдено<br>в этих вкладках:</li>
+          <div class="dropdown-divider"></div>
+          <li v-for="item in searchData" :key="item.url"><nuxt-link class="dropdown-item" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link></li>
+        </ul>
+        <ul v-else-if="searchText.length > 2 && searchData.length === 0" class="dropdown-menu">
+          <li class="dropdown-item">Ничего не найдено 😔</li>
+        </ul>
+        <ul v-else class="dropdown-menu">
+          <li class="dropdown-item" v-html="searchError"></li>
+        </ul>
+      </div>
+    </div>
     </form>
   </div>
+
 </nav>
 <nuxt />
     <footer>
@@ -71,7 +88,6 @@
 </div>
 </template>
 <script>
-  //import axios from "~/plugins/axios";
   export default {
   
   data (){
@@ -80,20 +96,33 @@
       tab: [],
       max_tabs: [],
       max_tab: [],
+      search: [],
+      searchData: [],
+      searchText: "",
+      searchError: "",
       }
   },
   created(){
     this.loadTabs()
     this.loadTab()
+    this.loadSearch()
   },
   methods:{
-    async loadTabs ($axios, params){
-    this.tabs = await this.$axios.get( `/tabs_name/`)
-    this.tab = this.tabs.data
+    async loadTabs($axios, params){
+      this.tabs = await this.$axios.get( `/tabs_name/`)
+      this.tab = this.tabs.data
     },
-    async loadTab ($axios, params){
-    this.max_tabs = await this.$axios.get( `/tab/`)
-    this.max_tab = this.max_tabs.data
+    async loadTab($axios, params){
+      this.max_tabs = await this.$axios.get( `/tab/`)
+      this.max_tab = this.max_tabs.data
+    },
+    async loadSearch($axios, params){
+      if (this.searchText.length > 2){     
+        this.search = await this.$axios.get( `/tabs_name/?search=${this.searchText}`,)
+        this.searchData = this.search.data
+      } else if (this.searchText.length > 0 && this.searchText.length <= 3){
+        this.searchError = 'Минимальная длина запроса<br>больше 3 символов'
+      }
     }
   }
   }

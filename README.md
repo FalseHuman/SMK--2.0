@@ -9,9 +9,7 @@ $ cd frontend
 $ npm install
 $ npm run dev
 #  Django
-$ pip install Django==2.2.1
-$ pip install djangorestframework
-$ pip install django-cors-headers
 $ cd backend
+$ pip install -r ./requirements.txt
 $ python manage.py runserver
 ```

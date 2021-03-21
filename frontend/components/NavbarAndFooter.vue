@@ -33,9 +33,9 @@
           <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{article.title}}
             </a>
-              <div  class="dropdown-menu size-navbar-text">
+              <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                 <a v-for="item in tab" :key="item.url" >
-                  <nuxt-link class="dropdown-item" v-if="item.name_tab.title===article.title" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link>
+                  <nuxt-link class="dropdown-item text-wrap" v-if="item.name_tab.title===article.title" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link>
                 </a>
               </div>
         </li>
@@ -48,13 +48,17 @@
         <input class="form-control mr-sm-2 " type="search" v-model="searchText" placeholder="Введите запрос..." aria-label="Search">
         <button class="btn btn-outline-primary" type="submit" data-toggle="dropdown" v-on:click="loadSearch">Поиск
         <span class="caret"></span></button>
-        <ul v-if="searchText.length > 2 && searchData.length > 0" class="dropdown-menu">
-          <li class="dropdown-item">Слово "{{searchText}}" найдено<br>в этих вкладках:</li>
+        <ul v-if="searchText.length > 2" class="dropdown-menu">
+          <li class="dropdown-item text-wrap">Результат по запросу "{{searchText}}":</li>
           <div class="dropdown-divider"></div>
-          <li v-for="item in searchData" :key="item.url"><nuxt-link class="dropdown-item" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link></li>
-        </ul>
-        <ul v-else-if="searchText.length > 2 && searchData.length === 0" class="dropdown-menu">
-          <li class="dropdown-item">Ничего не найдено 😔</li>
+          <div v-if="searchData.length > 0">
+            <li v-for="item in searchData" :key="item.url">
+              <nuxt-link class="dropdown-item" :to="`/${item.name_tab.sections}/${item.slug}`">{{item.title}}</nuxt-link>
+            </li>
+            </div>
+          <div v-else>
+            <li class="dropdown-item" v-html="searchNull"></li>
+          </div>
         </ul>
         <ul v-else class="dropdown-menu">
           <li class="dropdown-item" v-html="searchError"></li>
@@ -99,6 +103,7 @@
       search: [],
       searchData: [],
       searchText: "",
+      searchNull: "",
       searchError: "",
       }
   },
@@ -119,8 +124,12 @@
     async loadSearch($axios, params){
       if (this.searchText.length > 2){     
         this.search = await this.$axios.get( `/tabs_name/?search=${this.searchText}`,)
-        this.searchData = this.search.data
-      } else if (this.searchText.length > 0 && this.searchText.length <= 3){
+        if (this.search.data.length > 0){
+          this.searchData = this.search.data
+        } else {
+          this.searchNull = 'Упсс...😔 Ничего не найдено'   
+        }
+      } else if (this.searchText.length > 0 && this.searchText.length < 3){
         this.searchError = 'Минимальная длина запроса<br>больше 3 символов'
       }
     }
@@ -147,37 +156,34 @@
     -webkit-font-smoothing: antialiased;
   }
   body{
-  width: 100%;
-  height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
-  font-family: 'Suisse';
+    width: 100%;
+    height: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-family: 'Suisse';
   }
   @media (max-width: 1200px){
    body{
     width: 100%;
-  height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
+    height: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
    }
   }
-   iframe{
-   width: 500px;
- }
   @media (max-width: 992px){
    body{
     width: 100%;
-  height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
+    height: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
    }
   }
   @media (max-width: 767px){
    body{
     width: 100%;
-  height: 100%;
-  padding-left: 5%;
-  padding-right: 5%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
   
    }
    .container table td {
@@ -190,32 +196,6 @@
  iframe{
    width: 100%;
  }
-   .footer{
-    width: 55% !important;
-   }
-   .textcols {
-      white-space: nowrap;
-      font-size: 0;
-  }
-  .textcols-item {
-      white-space: normal;	
-      display: inline-block;
-      width: 30%;
-      vertical-align: top;
-    font-size: 13px !important;
-  }
-  .textcols .textcols-item:last-child {
-      margin-right: 0 ;
-  }
-  .item{
-    margin-left: 5px;
-  }
-  .left{
-    margin-left: -20px;
-  }
-  .left-left{
-    margin-left: -20px;
-  }
   .size-navbar-text{
     font-size:  30px;
   }
@@ -282,36 +262,13 @@
       font-family: 'Arial Narrow Bold', sans-serif;
       margin-bottom: 10px;
   }
-  .footer{
-  
-    width: 55%;
-  }
-  .textcols {
-      white-space: nowrap;
-      font-size: 0;
-  }
-  .textcols-item {
-      white-space: normal;	
-      display: inline-block;
-      width: 100%;
-      vertical-align: top;
-      font-size: 16px;
-  }
-  .textcols .textcols-item:last-child {
-      margin-right: 0 ;
-  }
-  .item{
-    margin-left: 50px;
-  }
+
   .news{
        box-sizing: border-box;
     }
     .list-group-item{
       padding: .50rem !important;
     }
-  .icon{
-    margin-top: -6px !important;
-}
  .container {
      min-width: 320px;
      max-width: 100%;

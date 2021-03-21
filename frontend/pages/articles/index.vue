@@ -3,7 +3,7 @@
   <p class="mt-2">Всего статей: {{articles.length}}</p>
   <template v-for="article in articles">
     <div :key="article.id">
-    <li><nuxt-link class="black" :to="`articles/${article.id}`">{{article.title}};</nuxt-link></li>
+    <li><nuxt-link class="black" :to="`articles/${article.slug}`">{{article.title}};</nuxt-link></li>
     </div> 
   </template>
 </div>
